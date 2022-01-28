@@ -22,10 +22,6 @@ function App() {
     
   }, []);
 
-  function buttonClick(order) {
-      const newIndex = data.findIndex(item=> item.order === order);
-      setActiveIndex(newIndex);
-  }
 
   if(loading) {
     return (
@@ -44,8 +40,8 @@ function App() {
          <div className='jobs-center'>
            <div className='btn-container'>
              {
-               data.map(({order, company}, index)=>{
-                 return <button className={'job-btn ' + (activeIndex === index ? 'active-btn': '')} key={order} onClick={()=>{ buttonClick(order) }}>{company}</button>
+               data.map(({company}, index)=>{
+                 return <button className={'job-btn ' + (activeIndex === index ? 'active-btn': '')} key={index} onClick={()=>{ setActiveIndex(index) }}>{company}</button>
                })
              }
            </div>
